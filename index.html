@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Car Parking Management</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Car Parking Management</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form id="carForm">
+                <div class="form-group">
+                    <label for="owner">Car Owner:</label>
+                    <input type="text" class="form-control" id="owner" required>
+                </div>
+                <div class="form-group">
+                    <label for="carType">Car Type:</label>
+                    <input type="text" class="form-control" id="carType" required>
+                </div>
+                <div class="form-group">
+                    <label for="plateNumber">Plate Number:</label>
+                    <input type="text" class="form-control" id="plateNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="entranceTime">Time of Entrance:</label>
+                    <input type="time" class="form-control" id="entranceTime" required>
+                </div>
+                <button type="button" class="btn btn-primary btn-block" onclick="parkCar()">Park Car</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Parked Cars:</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Car Owner</th>
+                        <th>Car Type</th>
+                        <th>Plate Number</th>
+                        <th>Entrance Time</th>
+                    </tr>
+                </thead>
+                <tbody id="carList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function parkCar() {
+        var owner = document.getElementById("owner").value;
+        var carType = document.getElementById("carType").value;
+        var plateNumber = document.getElementById("plateNumber").value;
+        var entranceTime = document.getElementById("entranceTime").value;
+
+        var newRow = document.createElement("tr");
+        newRow.innerHTML = `<td>${owner}</td><td>${carType}</td><td>${plateNumber}</td><td>${entranceTime}</td>`;
+
+        document.getElementById("carList").appendChild(newRow);
+        document.getElementById("carForm").reset();
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
